@@ -63,11 +63,9 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="/dashboard/content/edit">Edit Content</a></li>
-              <li><a class="" href="/dashboard/about/edit">Edit About Us</a></li>
+              <li><a class="" href="{{route('category.new')}}">Create Category</a></li>
 
-              <li><a class="" href="/dashboard/sliders/edit">Edit Sliders</a></li>
-              
+
             </ul>
           </li>
          <li>
@@ -76,10 +74,16 @@
                           <span>Users</span>
                       </a>
           </li>
+            <li>
+                <a class="" href="{{route('categories')}}">
+                    <i class="fa fa-users"></i>
+                    <span>Categories</span>
+                </a>
+            </li>
 
-        
 
-          
+
+
 
         </ul>
         <!-- sidebar menu end-->
@@ -90,7 +94,7 @@
     <div id="app">
       @yield('content')
     </div>
-       
+
 
   </section>
   <!-- container section start -->

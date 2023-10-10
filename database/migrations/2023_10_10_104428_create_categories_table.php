@@ -18,9 +18,10 @@ class CreateCategoriesTable extends Migration
             $table->string('title');
             $table->text('desc');
             $table->string('image');
-            $table->integer('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('is_deleted')->default(0);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

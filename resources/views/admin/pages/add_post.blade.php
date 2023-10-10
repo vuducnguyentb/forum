@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Session;
 
 @section('content')
           <!--main content start-->
-       
-          
+
+
     <section id="main-content">
         <section class="wrapper">
           <div class="row">
@@ -34,32 +34,32 @@ use Illuminate\Support\Facades\Session;
 
       <p class="alert
       {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('message') }}</p>
-      
+
       @endif
       <form class="form-horizontal" method="POST" action="{{ route('post.add')}}" enctype="multipart/form-data">
           @csrf
-      
+
         <div class="form-group">
-          <label class="col-lg-2 control-label">Post Title</label>
+          <label class="col-lg-2 control-label">Category Title</label>
           <div class="col-lg-10">
           <input name="title" class="form-control" value=""/>
           </div>
         </div>
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Post Image</label>
+            <label class="col-lg-2 control-label">Category Image</label>
             <div class="col-lg-10">
             <input type="file" name="image" class="form-control" />
             </div>
           </div>
         <div class="form-group">
-          <label class="col-lg-2 control-label">Post</label>
+          <label class="col-lg-2 control-label">Category Description</label>
           <div class="col-lg-10">
           <textarea name="post" id="editor1" class="form-control" cols="30" rows="5"></textarea>
           </div>
         </div>
-       
-        
+
+
 
         <div class="form-group">
           <div class="col-lg-offset-2 col-lg-10">
@@ -76,5 +76,5 @@ use Illuminate\Support\Facades\Session;
         </section>
       </section>
       <!--main content end-->
-      
+
 @endsection
