@@ -34,6 +34,7 @@ Route::get('/topic',function (){
 
 Route::get('dashboard/home','App\Http\Controllers\DashboardController@home');
 
+#category
 Route::get('dashboard/category/new','App\Http\Controllers\CategoryController@create')
     ->name('category.new');
 Route::post('dashboard/category/new','App\Http\Controllers\CategoryController@store')
@@ -48,3 +49,18 @@ Route::post('dashboard/categories/edit/{id}','App\Http\Controllers\CategoryContr
     ->name('category.update');
 Route::get('dashboard/categories/delete/{id}','App\Http\Controllers\CategoryController@destroy')
     ->name('category.destroy');
+#forum
+Route::get('dashboard/forum/new','App\Http\Controllers\ForumController@create')
+    ->name('forum.new');
+Route::post('dashboard/forum/new','App\Http\Controllers\ForumController@store')
+    ->name('forum.store');
+Route::get('dashboard/forums','App\Http\Controllers\ForumController@index')
+    ->name('forums');
+Route::get('dashboard/forums/{id}','App\Http\Controllers\ForumController@show')
+    ->name('forum');
+Route::get('dashboard/forums/edit/{id}','App\Http\Controllers\ForumController@edit')
+    ->name('forum.edit');
+Route::post('dashboard/forums/edit/{id}','App\Http\Controllers\ForumController@update')
+    ->name('forum.update');
+Route::get('dashboard/forums/delete/{id}','App\Http\Controllers\ForumController@destroy')
+    ->name('forum.destroy');

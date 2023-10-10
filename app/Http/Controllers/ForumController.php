@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Forum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class CategoryController extends Controller
+class ForumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +29,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.category.new_category');
+        $categories = Category::latest()->get();
+
+        return view('admin.pages.forum.new_forum')->with([
+            'categories'=>$categories
+        ]);
     }
 
     /**
@@ -39,24 +44,8 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'image' => 'required',
-            'desc' => 'required'
-        ]);
-        $data = $request->all();
-        $category = new Category();
-        $category->title = $data['title'];
-        $category->desc = $data['desc'];
-        $category->user_id = auth()->id();
-        $image = $request->image;
-        $name = $image->getClientOriginalName();
-        $new_name = time().$name;
-        $dir = 'storage/images/categories/';
-        $image->move($dir,$new_name);
-        $category->image = $new_name;
-        $category->save();
-        Session::flash('message','Category Created Successfully');
+        Forum::create($request->all());
+        Session::flash('message','Forum Created Successfully');
         Session::flash('alert-class','alert-success');
         return back();
     }
