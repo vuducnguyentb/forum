@@ -31,3 +31,5 @@ Route::get('/c-overview',function (){
 Route::get('/topic',function (){
     return view('client.topic');
 });
+
+Route::get('dashboard/home','App\Http\Controllers\DashboardController@home');
