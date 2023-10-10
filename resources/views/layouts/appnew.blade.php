@@ -1,20 +1,37 @@
-{{--@if (Route::has('login'))--}}
-{{--    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">--}}
-{{--        @auth--}}
-{{--            <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>--}}
-{{--        @else--}}
-{{--            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>--}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laracom</title>
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+</head>
+<body>
+<div class="container-fluid">
+    <!-- First section -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <h1>
+                <a href="#" class="navbar-brand">Simon's Tech School Forum</a>
+            </h1>
+            <form action="#" class="form-inline mr-3 mb-2 mb-sm-0">
+                <input type="text" class="form-control" placeholder="search" />
+                <button type="submit" class="btn btn-success">Search Forum</button>
+            </form>
+        </div>
+    </nav>
 
-{{--            @if (Route::has('register'))--}}
-{{--                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>--}}
-{{--            @endif--}}
-{{--        @endauth--}}
-{{--    </div>--}}
-{{--@endif--}}
+    <!-- first section end -->
+</div>
+<div class="container">
+    <nav class="breadcrumb">
+        <a href="#" class="breadcrumb-item active"> Dashboard</a>
+    </nav>
 
-@extends('layouts.app')
-
-@section('content')
     <div class="row">
         <div class="col-lg-8">
             <div class="row">
@@ -437,4 +454,22 @@
             </aside>
         </div>
     </div>
-@endsection
+</div>
+
+<div class="container-fluid">
+    <footer class="small bg-dark text-white">
+        <div class="container py-4">
+            <ul class="list-inline mb-0 text-center">
+                <li class="list-inline-item">
+                    &copy; 2021 Simon's tech school forum
+                </li>
+                <li class="list-inline-item">All rights reserved</li>
+                <li class="list-inline-item">Terms and privacy policy</li>
+            </ul>
+        </div>
+    </footer>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
