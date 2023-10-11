@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Session;
         <section class="wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-edit"></i>Edit Category</h3>
+                    <h3 class="page-header"><i class="fa fa-edit"></i>Edit Forum</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="/dashboard/home">Home</a></li>
-                        <li><i class="fa fa-question"></i>Category</li>
+                        <li><i class="fa fa-question"></i>Forum</li>
                         <li><i class="fa fa-plus"></i>Edit</li>
                     </ol>
                 </div>
@@ -38,32 +38,45 @@ use Illuminate\Support\Facades\Session;
       {{ Session::get('alert-class', 'alert-success') }}">{{Session::get('message') }}</p>
 
                         @endif
-                        <form class="form-horizontal" method="POST" action="{{ route('category.update',$category->id)}}"
+                        <form class="form-horizontal" method="POST" action="{{ route('forum.update',$forum->id)}}"
                               enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
-                                <label class="col-lg-2 control-label">Category Title</label>
+                                <label class="col-lg-2 control-label">Forum Title</label>
                                 <div class="col-lg-10">
-                                    <input name="title" class="form-control" value="{{$category->title}}"/>
+                                    <input name="title" class="form-control" value="{{$forum->title}}"/>
                                 </div>
 
                             </div>
 
                             <div class="form-group">
-                                <label class="col-lg-2 control-label">Category Image</label>
-                                <div class="col-lg-10">
-                                    <input type="file" name="image" class="form-control"/>
-                                </div>
-
-                            </div>
-                            <div class="form-group">
-                                <label class="col-lg-2 control-label">Category description</label>
+                                <label class="col-lg-2 control-label">Forum desc</label>
                                 <div class="col-lg-10">
                                     <textarea name="desc" id="editor1" class="form-control" cols="30"
                                               rows="5">
-                                        {{$category->desc}}
+                                        {{$forum->desc}}
                                     </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">Forum Category</label>
+                                <div class="col-lg-10">
+                                    <select name="category_id" id="" class="form-control">
+                                        @foreach($categories as $category)
+                                            @if($forum->category_id == $category->id)
+                                                <option value="{{$category->id}}" selected>{{$category->title}}</option>
+                                            @else
+                                                <option value="{{$category->id}}">{{$category->title}}</option>
+
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-lg-10">
+                                    @error('desc')
+                                    <p class="alert alert-danger">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group">

@@ -16,9 +16,9 @@ class ForumController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->paginate(20);
-        return view('admin.pages.category.categories')->with([
-            'categories'=>$categories
+        $forums = Forum::with(['category'])->latest()->paginate(20);
+        return view('admin.pages.forum.forums')->with([
+            'forums'=>$forums
         ]);
     }
 
@@ -29,11 +29,8 @@ class ForumController extends Controller
      */
     public function create()
     {
-        $categories = Category::latest()->get();
 
-        return view('admin.pages.forum.new_forum')->with([
-            'categories'=>$categories
-        ]);
+        return view('admin.pages.forum.new_forum');
     }
 
     /**
@@ -72,9 +69,11 @@ class ForumController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.pages.category.edit_category')->with([
-            'category'=>$category
+        $categories = Category::latest()->get();
+        $forum = Forum::find($id);
+        return view('admin.pages.forum.edit_forum')->with([
+            'forum'=>$forum,
+            'categories'=>$categories,
         ]);
     }
 
@@ -89,25 +88,12 @@ class ForumController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'image' => 'required',
             'desc' => 'required'
         ]);
         $data = $request->all();
-        $category = Category::find($id);
-        $category->title = $data['title'];
-        $category->desc = $data['desc'];
-        $category->user_id = auth()->id();
-        if($request->image){
-            $image = $request->image;
-            $name = $image->getClientOriginalName();
-            $new_name = time().$name;
-            $dir = 'storage/images/categories/';
-            $image->move($dir,$new_name);
-        }
-
-        $category->image = $new_name;
-        $category->save();
-        Session::flash('message','Category Updated Successfully');
+        $forum = Forum::find($id);
+       $forum->update($request->all());
+        Session::flash('message','Forum Updated Successfully');
         Session::flash('alert-class','alert-success');
         return back();
     }
@@ -120,10 +106,10 @@ class ForumController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::find($id);
-        if($category){
-            $category->delete();
-            Session::flash('message','Category Deleted Successfully');
+        $forum = Forum::find($id);
+        if($forum){
+            $forum->delete();
+            Session::flash('message','FORUM Deleted Successfully');
             Session::flash('alert-class','alert-success');
             return back();
         }

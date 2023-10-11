@@ -19,9 +19,11 @@ class CreateForumsTable extends Migration
             $table->text('desc');
             $table->string('image')->nullable();
             $table->integer('topics')->default(0);
-            $table->integer('category_id');
+            $table->unsignedBigInteger('category_id');
             $table->integer('user_id');
             $table->boolean('is_deleted')->default(0);
+            $table->foreign('category_id')->references('id')
+                ->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

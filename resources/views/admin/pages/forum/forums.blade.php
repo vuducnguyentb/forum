@@ -8,10 +8,10 @@
             <!--overview start-->
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header"><i class="fa fa-laptop"></i>Forum Categories</h3>
+                    <h3 class="page-header"><i class="fa fa-laptop"></i>Forums</h3>
                     <ol class="breadcrumb">
                         <li><i class="fa fa-home"></i><a href="/dashboard/home">Home</a></li>
-                        <li><i class="fa fa-users"></i>Categories</li>
+                        <li><i class="fa fa-users"></i>Forums</li>
                     </ol>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h2><i class="fa fa-flag-o red"></i><strong>Forum Categories</strong></h2>
+                            <h2><i class="fa fa-flag-o red"></i><strong>Forums</strong></h2>
                             <div class="panel-actions">
                                 <a href="/dashboard/home" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
                                 <a href="/dashboard/home" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
@@ -33,7 +33,7 @@
                                 <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Image</th>
+                                    <th>Category</th>
                                     <th>Des</th>
                                     <th>View</th>
                                     <th>Edit</th>
@@ -42,23 +42,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @if (count($categories)> 0)
-                                    @foreach ($categories as $category)
+                                @if (count($forums)> 0)
+                                    @foreach ($forums as $item)
                                         <tr>
-                                            <td>{{$category->title}}</td>
-                                            <td>image</td>
-                                            <td>{!! $category->desc !!}</td>
-                                            <td><a href="{{route('category',$category->id)}}"><i class="fa fa-eye text-success"></i></a></td>
-                                            <td><a href="{{route('category.edit',$category->id)}}"><i class="fa fa-edit text-info"></i></a></td>
-                                            <td><a href="{{route('category.destroy',$category->id)}}" class="text-danger"><i class="fa fa-trash"></i>Delete</a></td>
-
+                                            <td>{{$item->title}}</td>
+                                            <td>{{$item->category->title}}</td>
+                                            <td>{!! $item->desc !!}</td>
+                                            <td><a href="{{route('forum',$item->id)}}"><i class="fa fa-eye text-success"></i></a></td>
+                                            <td><a href="{{route('forum.edit',$item->id)}}"><i class="fa fa-edit text-info"></i></a></td>
+                                            <td><a href="{{route('forum.destroy',$item->id)}}" class="text-danger"><i class="fa fa-trash"></i>Delete</a></td>
                                         </tr>
                                     @endforeach
                                 @endif
                                 </tbody>
                             </table>
 
-                            {{ $categories->links() }}
+                            {{ $forums->links() }}
                         </div>
 
                     </div>
