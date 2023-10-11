@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\FrontEndController@index');
 
 Auth::routes();
 
@@ -25,9 +23,11 @@ Route::get('/new-topic',function (){
     return view('client.new-topic');
 });
 
-Route::get('/c-overview',function (){
-    return view('client.category-overview');
-});
+Route::get('/category/overview/{id}','App\Http\Controllers\FrontEndController@categoryOverview')
+    ->name('category.overview');
+Route::get('/forum/overview/{id}','App\Http\Controllers\FrontEndController@forumOverview')
+    ->name('forum.overview');
+
 Route::get('/topic',function (){
     return view('client.topic');
 });

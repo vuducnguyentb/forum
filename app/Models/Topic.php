@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
     use HasFactory;
+
+    public function forum(){
+        return $this->belongsTo(Forum::class,'topic_id');
+    }
 }

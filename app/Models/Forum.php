@@ -14,4 +14,12 @@ class Forum extends Model
     public function category(){
         return $this->belongsTo(Category::class,'category_id');
     }
+
+    public function topics(){
+        return $this->hasMany(Topic::class);
+    }
+
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
 }
