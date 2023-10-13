@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="mb-3 clearfix">
+            <div class="mb-3 clearfix col-lg-12 ">
                 <nav aria-label="Navigate post pages" class="float-lg-right">
                     <ul class="pagination pagination-sm mb-lg-0">
                         <li class="page-item active">
@@ -141,7 +141,7 @@
         </div>
 
 
-        <a href="#" class="btn btn-lg btn-primary mb-2">New Topic</a>
+        <a href="{{route('topic.new',$forum->id)}}" class="btn btn-lg btn-primary mb-2">New Topic</a>
     </div>
 
 @endsection

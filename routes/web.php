@@ -64,3 +64,19 @@ Route::post('dashboard/forums/edit/{id}','App\Http\Controllers\ForumController@u
     ->name('forum.update');
 Route::get('dashboard/forums/delete/{id}','App\Http\Controllers\ForumController@destroy')
     ->name('forum.destroy');
+
+#topics
+Route::get('client/topic/new/{id}','App\Http\Controllers\TopicController@create')
+    ->name('topic.new');
+Route::post('client/topic/new','App\Http\Controllers\TopicController@store')
+    ->name('topic.store');
+//Route::get('client/topics','App\Http\Controllers\ForumController@index')
+//    ->name('topics');
+//Route::get('client/topics/{id}','App\Http\Controllers\ForumController@show')
+//    ->name('topic');
+//Route::get('client/topics/edit/{id}','App\Http\Controllers\ForumController@edit')
+//    ->name('topic.edit');
+//Route::post('client/topics/edit/{id}','App\Http\Controllers\ForumController@update')
+//    ->name('topic.update');
+//Route::get('client/topics/delete/{id}','App\Http\Controllers\ForumController@destroy')
+//    ->name('topic.destroy');
