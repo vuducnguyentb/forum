@@ -44,14 +44,14 @@
                                 <tr>
                                     <td>
                                         <h3 class="h5">
-                                            <a href="#" class="text-uppercase">{{$forum->title}}</a>
+                                            <a href="{{route('forum.overview',$forum->id)}}" class="text-uppercase">{{$forum->title}}</a>
                                         </h3>
                                         <p class="mb-0">
                                            {!! $forum->desc !!}
                                         </p>
                                     </td>
-                                    <td><div>{{$forum->topics}}</div></td>
-                                    <td><div>{{$forum->posts}}</div></td>
+                                    <td><div>{{$forum->discussions->count()}}</div></td>
+{{--                                    <td><div>{{$forum->posts}}</div></td>--}}
 {{--                                    <td>--}}
 {{--                                        <h4 class="h6 font-weight-bold mb-0">--}}
 {{--                                            <a href="#">Post name</a>--}}

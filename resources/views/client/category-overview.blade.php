@@ -23,7 +23,7 @@
                             <tr>
                                 <th scope="col">Forum</th>
                                 <th scope="col">Topics</th>
-                                <th scope="col">Posts</th>
+{{--                                <th scope="col">Posts</th>--}}
                             </tr>
                             </thead>
                             <tbody>
@@ -33,14 +33,14 @@
                                     <tr>
                                         <td>
                                             <h3 class="h5">
-                                                <a href="{{route('forum.overview',$forum->id)}}" class="text-uppercase">{{$forum->title}}</a>
+                                                <a href="{{route('forum',$forum->id)}}" class="text-uppercase">{{$forum->title}}</a>
                                             </h3>
                                             <p class="mb-0">
                                                 {!! $forum->desc !!}
                                             </p>
                                         </td>
-                                        <td><div>{{$forum->topics}}</div></td>
-                                        <td><div>{{count($forum->posts)}}</div></td>
+                                        <td><div>{{count($forum->discussions)}}</div></td>
+{{--                                        <td><div>{{count($forum->posts)}}</div></td>--}}
 
                                     </tr>
 

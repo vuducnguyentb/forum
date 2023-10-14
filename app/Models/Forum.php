@@ -15,8 +15,8 @@ class Forum extends Model
         return $this->belongsTo(Category::class,'category_id');
     }
 
-    public function topics(){
-        return $this->hasMany(Topic::class);
+    public function discussions(){
+        return $this->hasMany(Discussion::class);
     }
 
     public function posts(){

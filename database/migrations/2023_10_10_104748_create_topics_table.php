@@ -13,21 +13,21 @@ class CreateTopicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('topics', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->text('desc');
-            $table->string('image')->nullable();
-            $table->unsignedBigInteger('forum_id');
-            $table->unsignedBigInteger('user_id');
-            $table->boolean('is_deleted')->default(0);
-            $table->integer('notify')->default(0);
-            $table->foreign('forum_id')->references('id')
-                ->on('forums')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')
-                ->on('users')->onDelete('cascade');
-            $table->timestamps();
-        });
+//        Schema::create('topics', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('title');
+//            $table->text('desc');
+//            $table->string('image')->nullable();
+//            $table->unsignedBigInteger('forum_id');
+//            $table->unsignedBigInteger('user_id');
+//            $table->boolean('is_deleted')->default(0);
+//            $table->integer('notify')->default(0);
+//            $table->foreign('forum_id')->references('id')
+//                ->on('forums')->onDelete('cascade');
+//            $table->foreign('user_id')->references('id')
+//                ->on('users')->onDelete('cascade');
+//            $table->timestamps();
+//        });
     }
 
     /**
@@ -37,6 +37,6 @@ class CreateTopicsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('topics');
+//        Schema::dropIfExists('topics');
     }
 }

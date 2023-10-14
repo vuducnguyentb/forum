@@ -7,7 +7,7 @@
             <a href="#" class="breadcrumb-item">Forum Category</a>
             <a href="#" class="breadcrumb-item">Forum Name</a>
             <span class="breadcrumb-item active"
-            >Forum Lorem ipsum, dolor sit amet consectetur adipisicing elit.</span
+            >{{$topic->title}}</span
             >
         </nav>
 
@@ -36,21 +36,21 @@
                                 </td>
                                 <td class="post-col d-lg-flex justify-content-lg-between">
                                     <div>
-                                        <span class="font-weight-bold">Post subject:</span>
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                                        <span class="font-weight-bold">Discussion subject:</span>
+                                        {{$topic->title}}
                                     </div>
                                     <div>
-                                        <span class="font-weight-bold">Posted:</span> 08.10.2021
+                                        <span class="font-weight-bold">Posted:</span> {{$topic->created_at->diffForHumans()}}
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     <div>
-                                        <span class="font-weight-bold">Joined:</span>08.10.2021
+                                        <span class="font-weight-bold">Joined:</span>{{$topic->user->created_at}}
                                     </div>
                                     <div>
-                                        <span class="font-weight-bold">Posts:</span> 200
+                                        <span class="font-weight-bold">Discussions:</span> {{$topic->user->topics->count()}}
                                     </div>
                                 </td>
                                 <td>
@@ -149,60 +149,29 @@
                 </ul>
             </nav>
         </div>
-        <form action="" class="mb-3">
-            <div class="form-group">
-                <label for="comment">Reply to this post</label>
-                <textarea
-                    class="form-control"
-                    name="comment"
-                    id=""
-                    rows="10"
-                    required
-                ></textarea>
-                <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
-                    Submit reply
-                </button>
-                <button type="reset" class="btn btn-danger mt-2 mb-lg-5">
-                    Reset
-                </button>
-            </div>
-        </form>
-        <div>
-            <div class="d-lg-flex align-items-center mb-3">
-                <form
-                    action=""
-                    class="form-inline d-block d-sm-flex mr-2 mb-3 mb-lg-0"
-                >
-                    <div class="form-group mr-2 mb-3 mb-md-0">
-                        <label for="email" class="mr-2">Email:</label>
-                        <input
-                            type="email"
-                            class="form-control"
-                            placeholder="example@gmail.com"
-                            required
-                        />
-                    </div>
 
-                    <div class="form-group mr-2 mb-3 mb-md-0">
-                        <label for="password" class="mr-2">Password:</label>
-                        <input
-                            type="password"
-                            class="form-control"
-                            name="password"
-                            required
-                        />
-                    </div>
+        @if(auth()->user())
+            <form action="" class="mb-3">
+                <div class="form-group">
+                    <label for="comment">Reply to this post</label>
+                    <textarea
+                        class="form-control"
+                        name="comment"
+                        id=""
+                        rows="10"
+                        required
+                    ></textarea>
+                    <button type="submit" class="btn btn-primary mt-2 mb-lg-5">
+                        Submit reply
+                    </button>
+                    <button type="reset" class="btn btn-danger mt-2 mb-lg-5">
+                        Reset
+                    </button>
+                </div>
+            </form>
 
-                    <button class="btn btn-primary">Login</button>
-                </form>
-                <span class="mr-2">or...</span>
-                <button class="btn btn-success">Create Account</button>
-            </div>
-        </div>
-        <p class="small">
-            <a href="#">Have you forgotten your account details?</a>
-        </p>
+        @endif
     </div>
 
 @endsection
- 
+

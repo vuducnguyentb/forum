@@ -66,17 +66,17 @@ Route::get('dashboard/forums/delete/{id}','App\Http\Controllers\ForumController@
     ->name('forum.destroy');
 
 #topics
-Route::get('client/topic/new/{id}','App\Http\Controllers\TopicController@create')
+Route::get('client/topic/new/{id}','App\Http\Controllers\DiscussionController@create')
     ->name('topic.new');
-Route::post('client/topic/new','App\Http\Controllers\TopicController@store')
+Route::post('client/topic/new','App\Http\Controllers\DiscussionController@store')
     ->name('topic.store');
 //Route::get('client/topics','App\Http\Controllers\ForumController@index')
 //    ->name('topics');
-//Route::get('client/topics/{id}','App\Http\Controllers\ForumController@show')
-//    ->name('topic');
-//Route::get('client/topics/edit/{id}','App\Http\Controllers\ForumController@edit')
+Route::get('client/topics/{id}','App\Http\Controllers\DiscussionController@show')
+    ->name('topic');
+//Route::get('client/topics/edit/{id}','App\Http\Controllers\DiscussionController@edit')
 //    ->name('topic.edit');
-//Route::post('client/topics/edit/{id}','App\Http\Controllers\ForumController@update')
+//Route::post('client/topics/edit/{id}','App\Http\Controllers\DiscussionController@update')
 //    ->name('topic.update');
-//Route::get('client/topics/delete/{id}','App\Http\Controllers\ForumController@destroy')
+//Route::get('client/topics/delete/{id}','App\Http\Controllers\DiscussionController@destroy')
 //    ->name('topic.destroy');
