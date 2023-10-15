@@ -105,21 +105,25 @@
                     <div class="card-body">
                         <h4 class="card-title">Members Statistics</h4>
                         <dl class="row">
+                            <dt class="col-8 mb-0">Total Categories:</dt>
+                            <dd class="col-4 mb-0">{{$totalCategories}}</dd>
+                        </dl>
+                        <dl class="row">
                             <dt class="col-8 mb-0">Total Forums:</dt>
-                            <dd class="col-4 mb-0">15</dd>
+                            <dd class="col-4 mb-0">{{$forumsCount}}</dd>
                         </dl>
                         <dl class="row">
                             <dt class="col-8 mb-0">Total Topics:</dt>
-                            <dd class="col-4 mb-0">500</dd>
+                            <dd class="col-4 mb-0">{{$topicsCount}}</dd>
                         </dl>
                         <dl class="row">
                             <dt class="col-8 mb-0">Total members:</dt>
-                            <dd class="col-4 mb-0">200</dd>
+                            <dd class="col-4 mb-0">{{$totalsMember}}</dd>
                         </dl>
                     </div>
                     <div class="card-footer">
                         <div>Newest Member</div>
-                        <div><a href="#">Member Name</a></div>
+                        <div><a href="#">{{$newest->name}}</a></div>
                     </div>
                 </div>
             </aside>

@@ -72,8 +72,10 @@ Route::post('client/topic/new','App\Http\Controllers\DiscussionController@store'
     ->name('topic.store');
 //Route::get('client/topics','App\Http\Controllers\ForumController@index')
 //    ->name('topics');
-Route::get('client/topics/{id}','App\Http\Controllers\DiscussionController@show')
+Route::get('client/topic/{id}','App\Http\Controllers\DiscussionController@show')
     ->name('topic');
+Route::post('client/topic/reply/{id}','App\Http\Controllers\DiscussionController@reply')
+    ->name('topic.reply');
 //Route::get('client/topics/edit/{id}','App\Http\Controllers\DiscussionController@edit')
 //    ->name('topic.edit');
 //Route::post('client/topics/edit/{id}','App\Http\Controllers\DiscussionController@update')

@@ -33,6 +33,21 @@
                 <input type="text" class="form-control" placeholder="search"/>
                 <button type="submit" class="btn btn-success">Search Forum</button>
             </form>
+            {{--            ĐĂNG NHẬP _ ĐĂNG XUẤT--}}
+            @guest
+                <a href="{{ route('login')}}" class="nav-link nav-item text-white btn btn-outline-info">Login</a>
+                <a href="{{ route('register')}}" class="nav-link nav-item text-white btn btn-info">Register</a>
+            @endguest
+            <a class="nav-link nav-item text-white">
+            @auth
+                <form id="logout-form" action="{{route('logout')}}" method="POST" >
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger">Logout</button>
+                </form>
+            @endauth
+            </a>
+            {{--            ĐĂNG NHẬP _ ĐĂNG XUẤT--}}
+
         </div>
     </nav>
 

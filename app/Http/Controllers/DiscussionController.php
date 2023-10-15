@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Discussion;
+use App\Models\DiscussionReply;
 use App\Models\Forum;
 use App\Models\Topic;
 use Illuminate\Http\Request;
@@ -104,5 +105,15 @@ class DiscussionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function reply(Request $request,$id){
+        $reply = new DiscussionReply();
+        $reply->desc = $request->desc;
+        $reply->user_id = auth()->id();
+        $reply->discussion_id = $id;
+        $reply->save();
+        return back();
+
     }
 }
