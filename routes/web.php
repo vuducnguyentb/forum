@@ -76,6 +76,8 @@ Route::get('client/topic/{id}','App\Http\Controllers\DiscussionController@show')
     ->name('topic');
 Route::post('client/topic/reply/{id}','App\Http\Controllers\DiscussionController@reply')
     ->name('topic.reply');
+Route::get('client/topic/reply/delete/{id}','App\Http\Controllers\DiscussionController@destroy')
+    ->name('reply.delete');
 //Route::get('client/topics/edit/{id}','App\Http\Controllers\DiscussionController@edit')
 //    ->name('topic.edit');
 //Route::post('client/topics/edit/{id}','App\Http\Controllers\DiscussionController@update')

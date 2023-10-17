@@ -4,7 +4,8 @@
     <div class="container">
         <nav class="breadcrumb">
             <a href="/" class="breadcrumb-item"> Forum Categories</a>
-            <a href="{{route('category.overview',$topic->forum->category->id)}}" class="breadcrumb-item">{{$topic->forum->category->title}}</a>
+            <a href="{{route('category.overview',$topic->forum->category->id)}}"
+               class="breadcrumb-item">{{$topic->forum->category->title}}</a>
             <a href="{{route('forum.overview',$topic->forum->id)}}" class="breadcrumb-item">{{$topic->forum->title}}</a>
             <span class="breadcrumb-item active"
             >{{$topic->title}}</span
@@ -96,8 +97,15 @@
                                                 {{$topic->title}}
                                             </div>
                                             <div>
-                                                <span class="font-weight-bold">Replied:</span> {{$reply->created_at->diffForHumans()}}
+                                                <span
+                                                    class="font-weight-bold">Replied:</span> {{$reply->created_at->diffForHumans()}}
                                             </div>
+                                            @if(auth()->id() == $reply->user_id)
+                                                <div>
+                                                    <a href="{{route('reply.delete',$reply->id)}}"
+                                                       class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                                </div>
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>

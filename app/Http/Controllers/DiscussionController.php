@@ -104,7 +104,10 @@ class DiscussionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $reply = DiscussionReply::find($id);
+        $reply->delete();
+        toastr()->success('Reply deleted successfully!');
+        return back();
     }
 
     public function reply(Request $request,$id){
@@ -113,7 +116,10 @@ class DiscussionController extends Controller
         $reply->user_id = auth()->id();
         $reply->discussion_id = $id;
         $reply->save();
+        toastr()->success('Reply saved successfully!');
         return back();
 
     }
+
+
 }
