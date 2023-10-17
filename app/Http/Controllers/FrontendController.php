@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 class FrontendController extends Controller
 {
     public function index(){
+        $user = new User;
+        $user_online = $user->allOnline();
         $forumsCount = count(Forum::all());
         $topicsCount = count(Discussion::all());
         $totalsMember = count(User::all());
@@ -24,6 +26,7 @@ class FrontendController extends Controller
             'newest'=>$newest,
             'totalsMember'=>$totalsMember,
             'totalCategories'=>$totalCategories,
+            'user_online'=>$user_online,
         ]);
     }
 
