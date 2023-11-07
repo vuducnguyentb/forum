@@ -84,3 +84,5 @@ Route::get('client/topic/reply/delete/{id}','App\Http\Controllers\DiscussionCont
 //    ->name('topic.update');
 //Route::get('client/topics/delete/{id}','App\Http\Controllers\DiscussionController@destroy')
 //    ->name('topic.destroy');
+
+Route::get('/updates','App\Http\Controllers\DiscussionController@updates');

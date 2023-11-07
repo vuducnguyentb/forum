@@ -7,7 +7,7 @@ use App\Models\DiscussionReply;
 use App\Models\Forum;
 use App\Models\Topic;
 use Illuminate\Http\Request;
-
+use Telegram;
 class DiscussionController extends Controller
 {
     /**
@@ -116,9 +116,22 @@ class DiscussionController extends Controller
         $reply->user_id = auth()->id();
         $reply->discussion_id = $id;
         $reply->save();
+        #khi trả lời sẽ gửi lên nhóm telegram
+        Telegram::sendMessage([
+           'chat_id'=>env('TELEGRAM_CHAT_ID','-4074031770'),
+            'parse_mode'=>'HTML',
+            'text'=>$request->desc
+        ]);
+
         toastr()->success('Reply saved successfully!');
+
         return back();
 
+    }
+
+    public function updates(){
+        $updates = Telegram::getUpdates();
+        dd($updates);
     }
 
 
