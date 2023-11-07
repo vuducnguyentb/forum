@@ -6,6 +6,7 @@ use App\Models\Discussion;
 use App\Models\DiscussionReply;
 use App\Models\Forum;
 use App\Models\Topic;
+use http\Url;
 use Illuminate\Http\Request;
 use Telegram;
 class DiscussionController extends Controller
@@ -114,13 +115,18 @@ class DiscussionController extends Controller
         $reply = new DiscussionReply();
         $reply->desc = $request->desc;
         $reply->user_id = auth()->id();
+        $disscussion = Discussion::find($id);
+        $forumId = $disscussion->forum->id;
+        $url = \Illuminate\Support\Facades\URL::to('/forum/overview/'.$forumId);
         $reply->discussion_id = $id;
         $reply->save();
         #khi trả lời sẽ gửi lên nhóm telegram
         Telegram::sendMessage([
            'chat_id'=>env('TELEGRAM_CHAT_ID','-4074031770'),
             'parse_mode'=>'HTML',
-            'text'=>$request->desc
+            'text'=>'<b>'.auth()->user()->name.'</b>'."Replied to the topic"
+            ."<b>".$disscussion->title.": "."</b>"
+            ."\n".$request->desc."\n"."<a href='".$url."'>Read it here</a>"
         ]);
 
         toastr()->success('Reply saved successfully!');
